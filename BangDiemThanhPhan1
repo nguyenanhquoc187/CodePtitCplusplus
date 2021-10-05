@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+int n;
+struct SinhVien
+{   
+    string masv,name,lop;
+    double d1,d2,d3;
+};
+void nhap(SinhVien a[]) {
+    for (int i=1;i<=n;i++) {
+        cin>>a[i].masv;
+        cin.ignore();
+        getline(cin,a[i].name);
+        cin>>a[i].lop>>a[i].d1>>a[i].d2>>a[i].d3;
+    }
+}
+void sapxep(SinhVien a[]) {
+    for (int i=1;i<n;i++) {
+        for (int j=i+1;j<=n;j++) if (a[i].masv > a[j].masv) swap(a[i],a[j]);
+    }
+}
+void in(SinhVien a[]) {
+    for (int i=1;i<=n;i++) {
+        cout<<i<<" "<<a[i].masv<<" "<<a[i].name<<" "<<a[i].lop<<" ";
+        cout<<fixed;
+        cout<<setprecision(1)<<a[i].d1<<" "<<a[i].d2<<" "<<a[i].d3;
+        cout<<endl;
+    }
+}
+int main () {
+    cin>>n;
+    SinhVien a[100];
+    nhap(a);
+    sapxep(a);
+    in(a);
+}
