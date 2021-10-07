@@ -1,6 +1,5 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-
 string sum_int_big(string a, string b) {
 	string sum;
 	if (a.size() > b.size() ) b.insert(0,a.size() - b.size(),'0'); else  a.insert(0,b.size() - a.size(),'0');
@@ -39,16 +38,11 @@ string tich_so_nguyen_lon(string a, string b) {
 	return tich;
 }
 int main () {
-	int t; 
-	cin >> t; 
+	int t;
+	cin >> t;
 	while (t--) {
 		string a,b;
-		long long c,du=0;
-		cin >> a >> b >> c;
-		string n = tich_so_nguyen_lon(a,b);
-		for (int i=0;i<n.size();i++) {
-			du = (du*10 + n[i] -'0') %c;
-		}
-		cout<<du<<endl;
+		cin >> a >> b;
+		cout<<tich_so_nguyen_lon(a,b)<<endl;
 	}
 }
