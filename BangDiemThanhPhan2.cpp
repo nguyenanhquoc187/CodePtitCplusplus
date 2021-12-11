@@ -1,27 +1,26 @@
 #include <bits/stdc++.h>
 using namespace std;
-struct SinhVien
-{   
-    string masv,name,lop;
-    double d1,d2,d3;
+struct data{
+	string masv,ten,lop;
+	float d1,d2,d3;
 };
-int main () {
-    int n;
-    cin>>n;
-    SinhVien a[100];
-    for (int i=1;i<=n;i++) {
-        cin>>a[i].masv;
-        cin.ignore();
-        getline(cin,a[i].name);
-        cin>>a[i].lop>>a[i].d1>>a[i].d2>>a[i].d3;
-    }
-    for (int i=1;i<n;i++) {
-        for (int j=i+1;j<=n;j++) if (a[i].name > a[j].name) swap(a[i],a[j]);
-    }
-    for (int i=1;i<=n;i++) {
-        cout<<i<<" "<<a[i].masv<<" "<<a[i].name<<" "<<a[i].lop<<" "<<fixed<<setprecision(1)<<a[i].d1<<" "<<a[i].d2<<" "<<a[i].d3<<endl;
-        // cout<<fixed;
-        // cout<<setprecision(1)<<a[i].d1<<" "<<a[i].d2<<" "<<a[i].d3;
-        // cout<<endl;
-    }
+bool cmp(data a,data b){
+	return a.ten<b.ten;
+}
+int main(){
+	int n;
+	cin>>n;
+	struct data a[n];
+	for(int i=0;i<n;i++){
+		cin.ignore();
+		getline(cin,a[i].masv);
+		getline(cin,a[i].ten);
+		getline(cin,a[i].lop);
+		cin>>a[i].d1>>a[i].d2>>a[i].d3;
+	}
+	sort(a,a+n,cmp);
+	for(int i=0;i<n;i++){
+		cout<<i+1<<" "<<a[i].masv<<" "<<a[i].ten<<" "<<a[i].lop;
+		printf(" %.1f %.1f %.1f\n",a[i].d1,a[i].d2,a[i].d3);
+	}
 }

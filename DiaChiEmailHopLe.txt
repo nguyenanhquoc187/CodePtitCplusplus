@@ -1,0 +1,59 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+	int t;cin>>t;
+	cin.ignore();
+	while(t--){
+		string s;
+		getline(cin,s);
+		int kt=0;
+		int cnt=0;
+		int m=0;
+		for(int i=0;i<s.size();i++) {
+			if(s[i]=='@') m++;
+		}
+		if(m==0) kt=1;
+		for(int i=0;i<s.size();i++){
+			if(('a'<=s[i]&&s[i] <= 'z')||('A'<=s[i] && s[i] <= 'Z') || s[i] == '.' || s[i]=='_' || s[i]=='@'||('0'<=s[i] && s[i]<='9'))  kt==0;
+			else{
+
+			kt=1;
+			//cout <<kt<<endl;
+			}
+			if(s[i]==' ') {
+				kt=1;
+				break;
+			}
+			//cout <<kt<<endl;
+			if(s[i]=='@') {
+				cnt++;
+				if(cnt>=2){
+					kt=1;
+					break;
+				}
+			}
+		}
+		int dem=0,x;
+		
+		for(int i=0;s[i]!='@';i++){
+			dem++;
+			x=i;
+		}
+		if(dem>64 || dem==0 ) kt=1;
+		int dem1=0;
+		for(int i=x+2;i<s.size();i++){
+			dem1++;
+		}
+		if(dem1>254) kt=1;
+		int z=0;
+		for(int i=x+1;i<s.size();i++) {
+			if(s[i]=='.') z++;
+		}
+		if(z==0) kt=1;
+		if(s[x+2]=='.' &&((x+2)==(s.size()-1))) kt=1;
+		if(s[s.size()-1]=='.') kt=1;
+		if(kt==1) cout <<"NO" <<endl;
+		else cout<<"YES" << endl;
+
+	}
+}
